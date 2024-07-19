@@ -79,5 +79,9 @@ html,body{
 .selectbtn option{
     background-color: gray;
     color: aliceblue;
-    border-radius: -10px;
+    /* border-radius: 10px; */
+    /* border: 20px solid black; */
+}
+.selectbtn{
+    border: none;
 }

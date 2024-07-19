@@ -4,7 +4,7 @@ const BASE_URL =
 //   for(code in countryList){
 //     console.log(code,countryList[code])
 //   }
-
+let resultamt=document.querySelector("#resultamt");
 let img1=document.querySelector("#img1");
 let img2=document.querySelector("#img2");
 
@@ -56,6 +56,9 @@ btn.addEventListener("click",(ee)=>{
   
 })
 window.addEventListener("load",()=>{
+    if(amt.value=="" || amt.value<0){
+        amt.value="1"
+    }
     fetchurldata()
 })
 fetchurldata=  async()=>{
@@ -80,13 +83,13 @@ let tocont=document.querySelector("#toselect");
 console.log("from",fromcont.value);
 console.log("to",tocont.value);
 
-let resultamt=document.querySelector("#resultamt");
 
 function displayResults(currency) {
     let fromRate = currency.rates[fromcont.value];
     let toRate = currency.rates[tocont.value];
     // finalValue.innerHTML = ((toRate / fromRate) * searchValue).toFixed(2);
     // finalAmount.style.display = "block";
-    resultamt.value="ghjk"
-    console.log(fromRate,toRate)
-  }
+    let finalres= ((toRate / fromRate) * amt.value).toFixed(2);
+    let restext =` ${ amt.value } ${fromcont.value} = ${finalres} ${tocont.value}`
+    resultamt.innerText=restext
+}
