@@ -52,11 +52,6 @@ fetchurldata = async () => {
         })
         .then(displayResults);
 
-    // let res= await fetch(urll)
-    // let data=await fetch(res.url)
-    // let response=await fetch(URL);
-    // let data=response[tocont.value.toLowerCase];
-    // console.log(data)
 }
 function displayResults(currency) {
     let fromRate = currency.rates[fromcont.value];
@@ -76,7 +71,6 @@ btn.addEventListener("click", (ee) => {
     if (amt.value == "" || amt.value < 0) {
         amt.value = "1";
     }
-    console.log(amt.value);
     fetchurldata();
 });
 
