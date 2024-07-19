@@ -55,15 +55,38 @@ btn.addEventListener("click",(ee)=>{
     fetchurldata()
   
 })
-
-fetchurldata=  ()=>{
-    let fromcont=document.querySelector("#fromselect");
-    let tocont=document.querySelector("#toselect");
-    // console.log(fromcont.value.toLowerCase());
-    // console.log(tocont.value);
-    const URL=`${BASE_URL}/${fromcont.value.toLowerCase()}/${tocont.value.toLowerCase()}.json`;
-
+window.addEventListener("load",()=>{
+    fetchurldata()
+})
+fetchurldata=  async()=>{
+   
+    // const URL=`${BASE_URL}/${fromcont.value.toLowerCase()}/${tocont.value.toLowerCase()}.json`;
+    const api='https://api.exchangerate-api.com/v4/latest/INR'
+    fetch(`${api}`)
+    .then((currency) => {
+      return currency.json(); 
+    })
+    .then(displayResults);
+    // let res= await fetch(urll)
+    // let data=await fetch(res.url)
     // let response=await fetch(URL);
     // let data=response[tocont.value.toLowerCase];
     // console.log(data)
+
 }
+let fromcont=document.querySelector("#fromselect");
+let tocont=document.querySelector("#toselect");
+
+console.log("from",fromcont.value);
+console.log("to",tocont.value);
+
+let resultamt=document.querySelector("#resultamt");
+
+function displayResults(currency) {
+    let fromRate = currency.rates[fromcont.value];
+    let toRate = currency.rates[tocont.value];
+    // finalValue.innerHTML = ((toRate / fromRate) * searchValue).toFixed(2);
+    // finalAmount.style.display = "block";
+    resultamt.value="ghjk"
+    console.log(fromRate,toRate)
+  }
